@@ -49,9 +49,9 @@ export default {
     onRouterClick() {
       const { parentPath } = this.$route.params
       if (!parentPath) {
-        this.$router.push({ name: 'signin_by_username' })
+        this.$router.push({ name: 'signin' })
       } else {
-        this.$router.push({ name: 'signin_by_username', params: { parentPath } })
+        this.$router.push({ name: 'signin', params: { parentPath } })
       }
     },
     /* 表单提交 */

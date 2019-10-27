@@ -16,7 +16,7 @@
 <script>
 export default {
   props: {
-    signinURL: { type: String, default: 'signin_by_username' }
+    signinURL: { type: String, default: 'signin' }
   },
   computed: {
     parentPath() {

@@ -44,7 +44,7 @@ export default {
   methods: {
     onLogoutClick() {
       this.$store.commit(SIGNOUT)
-      this.$router.push('/signin_by_username')
+      this.$router.push('/signin')
     }
   }
 }

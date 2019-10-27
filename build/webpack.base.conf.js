@@ -97,7 +97,7 @@ module.exports = {
         }
         console.log(message);
       },
-      navigateFallback: 'https://www.xiaohuochai.cc',
+      navigateFallback: 'http://www.ckia.net.cn',
       minify: true,
       navigateFallbackWhitelist: [/^(?!\/__).*/],
       dontCacheBustUrlsMatching: /./,

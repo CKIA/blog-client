@@ -80,9 +80,9 @@ export default function createRouter() {
       },
       // 按用户名登录
       {
-        path: '/signin_by_username',
+        path: '/signin',
         component: () => import(/* webpackChunkName:'user' */ '@/components/User/AuthSigninByUsername'),
-        name: 'signin_by_username'
+        name: 'signin'
       },
       // 用户页面
       {

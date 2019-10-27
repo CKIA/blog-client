@@ -39,7 +39,7 @@ const async = {
             } else if (data.code === 3) {
               commit(SHOW_ALERTTEXT, data.message)
               commit(SIGNOUT)
-              window.location.href = '/signin_by_username'
+              window.location.href = '/signin'
             } else {
               // 显示错误提示
               commit(SHOW_ALERTTEXT, '服务器故障')

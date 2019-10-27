@@ -9,12 +9,12 @@ export const CLEAR_POST = 'CLEAR_POST'
 
 const post = {
   state: {
-    docs: [],
+    result: [],
     doc: null
   },
   getters: {
-    postCount: state => state.docs.length,
-    getPosts: state => state.docs,
+    postCount: state => state.result.length,
+    getPosts: state => state.result,
     getPost: state => state.doc,
     getPostId: state => {
       if (state.doc) {
@@ -23,12 +23,12 @@ const post = {
     },
     getPostsFilterByCategoryNumber: state => number => {
       if (number === null) {
-        return state.docs
+        return state.result
       }
       const reg = new RegExp(`^${getNumberWithoutPostPositiveZero(number)}`)
-      return state.docs.filter(doc => doc.category && String(doc.category.number).match(reg))
+      return state.result.filter(doc => doc.category && String(doc.category.number).match(reg))
     },
-    getPostTitleByPostId: state => id => state.docs.find(doc => doc._id === id).title,
+    getPostTitleByPostId: state => id => state.result.find(doc => doc._id === id).title,
     getPostWithTitleDatas: (state, getters) => {
       const { doc } = state
       if (doc) {
@@ -83,9 +83,9 @@ const post = {
           doHideAlert: true,
           success(result) {
             // 保存文章
-            commit(LOAD_POSTS, result.docs)
+            commit(LOAD_POSTS, result.result)
             // 向前端通知操作成功
-            resolve(result.docs)
+            resolve(result.result)
           },
           fail(err) {
             // 向前端通知操作失败
@@ -98,7 +98,7 @@ const post = {
   mutations: {
     /* 保存所有文章信息 */
     [LOAD_POSTS](state, payload) {
-      state.docs = payload
+      state.result = payload
     },
     /* 保存当前文章信息 */
     [LOAD_POST](state, payload) {

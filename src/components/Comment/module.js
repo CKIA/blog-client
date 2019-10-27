@@ -11,13 +11,13 @@ export const DELETE_COMMENT_ASYNC = 'DELETE_COMMENT_ASYNC'
 
 const comment = {
   state: {
-    docs: []
+    result: []
   },
   getters: {
-    commentCount: state => state.docs.length,
-    getCommentById: state => id => state.docs.find(doc => doc._id === id),
-    getCommentsByPostId: state => id => state.docs.filter(doc => doc.post && doc.post._id === id),
-    getCommentsByUserId: state => id => state.docs.filter(doc => doc.user && doc.user._id === id),
+    commentCount: state => state.result.length,
+    getCommentById: state => id => state.result.find(doc => doc._id === id),
+    getCommentsByPostId: state => id => state.result.filter(doc => doc.post && doc.post._id === id),
+    getCommentsByUserId: state => id => state.result.filter(doc => doc.user && doc.user._id === id),
     getCommentsCountByPostId: (state, getters) => id => getters.getCommentsByPostId(id).length
   },
   actions: {
@@ -31,9 +31,9 @@ const comment = {
           doHideAlert: true,
           success(result) {
             // 保存类别
-            commit(LOAD_COMMENTS, result.docs)
+            commit(LOAD_COMMENTS, result.result)
             // 向前端通知操作成功
-            resolve(result.docs)
+            resolve(result.result)
           },
           fail(err) {
             // 向前端通知操作失败
@@ -111,15 +111,15 @@ const comment = {
   mutations: {
     /* 保存所有评论 */
     [LOAD_COMMENTS](state, payload) {
-      state.docs = payload
+      state.result = payload
     },
     /* 保存增加的评论到评论数组中 */
     [ADD_COMMENT](state, payload) {
-      state.docs = [payload, ...state.docs]
+      state.result = [payload, ...state.result]
     },
     /* 更新评论 */
     [UPDATE_COMMENT](state, payload) {
-      state.docs = state.docs.map(t => {
+      state.result = state.result.map(t => {
         if (t._id === payload._id) {
           return payload
         }
@@ -128,7 +128,7 @@ const comment = {
     },
     /* 删除评论 */
     [DELETE_COMMENT](state, payload) {
-      state.docs = state.docs.filter(t => t._id !== payload._id)
+      state.result = state.result.filter(t => t._id !== payload._id)
     }
   }
 }

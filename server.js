@@ -32,7 +32,7 @@ app.get('*', (req, res) => {
   }
 
   const context = {
-    title: '前端小站',
+    title: 'CKIA个人分享',
     url: req.url
   }
   renderer.renderToString(context, (err, html) => {

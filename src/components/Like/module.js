@@ -9,14 +9,14 @@ export const DELETE_LIKE_ASYNC = 'DELETE_LIKE_ASYNC'
 
 const like = {
   state: {
-    docs: []
+    result: []
   },
   getters: {
-    likeCount: state => state.docs.length,
-    getLikesCountByPostId: state => id => state.docs.filter(doc => doc.post && doc.post._id === id).length,
-    getLikesByUserId: state => id => state.docs.filter(doc => doc.user && doc.user._id === id),
+    likeCount: state => state.result.length,
+    getLikesCountByPostId: state => id => state.result.filter(doc => doc.post && doc.post._id === id).length,
+    getLikesByUserId: state => id => state.result.filter(doc => doc.user && doc.user._id === id),
     getLike: state => ({ postId, userId }) =>
-      state.docs.find(doc => doc.user && doc.user._id === userId && doc.post && doc.post._id === postId)
+      state.result.find(doc => doc.user && doc.user._id === userId && doc.post && doc.post._id === postId)
   },
   actions: {
     /* 加载所有点赞 */
@@ -28,9 +28,9 @@ const like = {
           doHideAlert: true,
           success(result) {
             // 保存类别
-            commit(LOAD_LIKES, result.docs)
+            commit(LOAD_LIKES, result.result)
             // 向前端通知操作成功
-            resolve(result.docs)
+            resolve(result.result)
           },
           fail(err) {
             // 向前端通知操作失败
@@ -88,15 +88,15 @@ const like = {
   mutations: {
     /* 保存全部点赞信息 */
     [LOAD_LIKES](state, payload) {
-      state.docs = payload
+      state.result = payload
     },
     /* 保存点赞信息 */
     [ADD_LIKE](state, payload) {
-      state.docs = [payload, ...state.docs]
+      state.result = [payload, ...state.result]
     },
     /* 保存删除当前点赞后的其他点赞信息 */
     [DELETE_LIKE](state, payload) {
-      state.docs = state.docs.filter(doc => doc._id !== payload._id)
+      state.result = state.result.filter(doc => doc._id !== payload._id)
     }
   }
 }

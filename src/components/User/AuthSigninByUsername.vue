@@ -1,5 +1,5 @@
 <template>
-  <AuthSign signinURL="signin_by_username">
+  <AuthSign signinURL="signin">
     <form @submit="onSubmit">
       <InputWithTest
         v-model="username"
@@ -57,6 +57,7 @@ export default {
     /* 表单提交 */
     onSubmit(e) {
       e.preventDefault()
+      debugger
       // 如果检测没有错误，则提交
       if (this.usernameErrMsg === '') {
         const { username, password } = this

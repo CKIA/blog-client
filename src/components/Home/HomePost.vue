@@ -7,7 +7,7 @@
     <ul :class="$style.main">
       <li
         v-lazy:background-image="item.imgUrl"
-        v-for="item in recommendPosts"
+        v-for="item in categoryRecommend"
         :class="$style['main-item']"
         :key="item._id"
         @click="$router.push(`/posts/${item._id}`)"
@@ -22,8 +22,9 @@
 <script>
 export default {
   computed: {
-    recommendPosts() {
-      return this.$store.getters.getRecommendPosts
+    categoryRecommend() {
+      console.info(this.$store.getters.categoryRecommend)
+      return this.$store.getters.categoryRecommend
     }
   }
 }

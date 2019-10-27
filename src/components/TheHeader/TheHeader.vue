@@ -2,7 +2,7 @@
   <header :class="$style.header">
     <div :class="$style.logoBox" @click="$router.push('/')">
       <SVGLogo height="32" width="32"/>
-      <h1 :class="$style.title">前端小站</h1>
+      <h1 :class="$style.title">CKIA个人分享</h1>
     </div>
     <BaseAvatar :style="{transform: `rotate(${beta}deg)`}" @click.native="onUserClick">
       {{ user ? user.username : '我' }}
@@ -66,7 +66,7 @@ export default {
         this.doShowMenuList = true
       // 如果用户未登录，则显示登录页面
       } else {
-        this.$router.push('/signin_by_username')
+        this.$router.push('/signin')
       }
     },
     changeBeta(e) {

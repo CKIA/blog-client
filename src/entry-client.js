@@ -19,16 +19,18 @@ Vue.mixin({
 const { app, router, store } = createApp()
 
 /* 获得初始数据 */
-import { LOAD_CATEGORIES_ASYNC } from '@/components/Category/module'
+import { LOAD_CATEGORIES_ASYNC,LOAD_RECOMMEND_ASYNC } from '@/components/Category/module'
 import { LOAD_POSTS_ASYNC } from '@/components/Post/module'
 import { LOAD_LIKES_ASYNC } from '@/components/Like/module'
 import { LOAD_COMMENTS_ASYNC } from '@/components/Comment/module'
 import { LOAD_USERS_ASYNC } from '@/components/User/module'
 (function getInitialData() {
-  const { postCount, categoryCount, userCount, likeCount, commentCount } = store.getters
+  const { postCount, categoryCount, categoryRecommend, userCount, likeCount, commentCount } = store.getters
   const { dispatch } = store
   // 获取类别信息
   !categoryCount && dispatch(LOAD_CATEGORIES_ASYNC),
+  // 获取推荐信息
+  !categoryRecommend && dispatch(LOAD_RECOMMEND_ASYNC),
   // 获取文章信息
   !postCount && dispatch(LOAD_POSTS_ASYNC),
   // 获取点赞信息

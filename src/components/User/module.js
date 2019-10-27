@@ -50,7 +50,7 @@ const auth = {
           success(result) {
             // 向前端通知操作成功
             resolve()
-            commit(LOAD_USERS, result.docs)
+            commit(LOAD_USERS, result.result)
           },
           fail(err) {
             // 向前端通知操作失败

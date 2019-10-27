@@ -108,7 +108,7 @@ export default {
       if (this.user) {
         return true
       }
-      this.$router.push({ name: 'signin_by_username', params: { parentPath: this.$route.path } })
+      this.$router.push({ name: 'signin', params: { parentPath: this.$route.path } })
     }
   }
 }

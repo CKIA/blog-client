@@ -19,6 +19,8 @@ module.exports = {
   plugins: ['vue'],
   // add your custom rules here
   rules: {
+    // 忽略空格校验
+    "space-before-function-paren": 0,
     // allow async-await
     'generator-star-spacing': 'off',
     // allow debugger during development

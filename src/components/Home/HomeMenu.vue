@@ -1,31 +1,21 @@
 <template>
   <ul :class="$style['menu']">
     <li
-      v-for="item in menuDatas"
-      :key="item.catrgory"
+      v-for="item in getCateGories"
+      :key="item.title"
       :class="$style['item']"
       @click="$router.push(item.url)"
     >
       <div :class="$style['title']">{{ item.name }}</div>
-      <p :class="$style['des']">{{ item.category }}</p>
+      <p :class="$style['des']">{{ item.title }}</p>
     </li>
   </ul>
 </template>
 <script>
-const menuDatas = [
-  { id: 0, name: '小', category: 'HTML', url: '/categories/1000000000' },
-  { id: 1, name: '火', category: 'CSS', url: '/categories/1100000000' },
-  { id: 2, name: '柴', category: 'JavaScript', url: '/categories/1200000000' },
-  { id: 3, name: '的', category: 'HTTP', url: '/categories/1300000000' },
-  { id: 4, name: '蓝', category: '前端框架', url: '/categories' },
-  { id: 5, name: '色', category: '前端工具', url: '/categories/1500000000' },
-  { id: 6, name: '理', category: '后端相关', url: '/categories' },
-  { id: 7, name: '想', category: '移动端', url: '/categories/1600000000' }
-]
 export default {
-  data() {
-    return {
-      menuDatas
+  computed: {
+    getCateGories() {
+      return this.$store.getters.getCateGories
     }
   }
 }
