@@ -6,14 +6,16 @@
     </header>
     <ul :class="$style.main">
       <li
-        v-lazy:background-image="item.imgUrl"
+        v-lazy:background-image="item.headPortrait"
         v-for="item in categoryRecommend"
         :class="$style['main-item']"
-        :key="item._id"
-        @click="$router.push(`/posts/${item._id}`)"
+        :key="item.id"
+        @click="$router.push(`/posts/${item.id}`)"
       >
-        <p :class="$style['main-item-txt']">{{ item.title }}</p>
-        <span :class="$style['main-item-category']">{{ item.titleData }}</span>
+        <!-- <a v-html="item.headPortrait"/> -->
+        <p :class="$style['main-item-txt']">{{ item.describe }}</p>
+        <span :class="$style['main-item-category-author']">作者:{{ item.authorName }}</span>
+        <span :class="$style['main-item-category']">创作时间:{{ item.createTime }}</span>
       </li>
     </ul>
   </section>
@@ -23,8 +25,8 @@
 export default {
   computed: {
     categoryRecommend() {
-      console.info(this.$store.getters.categoryRecommend)
-      return this.$store.getters.categoryRecommend
+      console.info(this.$store.getters.getPostsWithTitleData)
+      return this.$store.getters.getPostsWithTitleData
     }
   }
 }
@@ -87,6 +89,8 @@ export default {
   position: absolute;
   bottom: 10px;
   right: 10px;
+  width: 30%;
+  height: 20px;
   display: inline-block;
   padding: 2px 4px;
   border-radius: 6px;
@@ -94,7 +98,19 @@ export default {
   line-height: 1.5;
   background: rgba(7, 17, 27, .4);
 }
-
+.main-item-category-author {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 20%;
+  height: 20px;
+  display: inline-block;
+  padding: 2px 4px;
+  border-radius: 6px;
+  font-size: 1em;
+  line-height: 1.5;
+  background: rgba(7, 17, 27, .4);
+}
 @media all and (min-width: 900px) {
   .main {
     height: 670px;

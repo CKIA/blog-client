@@ -82,10 +82,11 @@ const post = {
           url: `${BASE_POST_URL}`,
           doHideAlert: true,
           success(result) {
+            console.log(result)
             // 保存文章
-            commit(LOAD_POSTS, result.result)
+            commit(LOAD_POSTS, result)
             // 向前端通知操作成功
-            resolve(result.result)
+            resolve(result)
           },
           fail(err) {
             // 向前端通知操作失败

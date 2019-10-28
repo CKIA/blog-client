@@ -25,6 +25,7 @@
 export default {
   computed: {
     getFilterPosts() {
+      console.log(this.$store.getters.getPostsFilterByCategoryNumber)
       return this.$store.getters.getPostsFilterByCategoryNumber
     },
     categoryDatas() {
