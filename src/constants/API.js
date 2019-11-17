@@ -2,7 +2,7 @@ let API_HOSTNAME
 if (process.env.NODE_ENV === 'production') {
   API_HOSTNAME = 'http://www.ckia.net.cn'
 } else {
-  API_HOSTNAME = 'http://ckia-PC'
+  API_HOSTNAME = 'http://www.ckia.net.cn'
 }
 export const SIGNUP_URL = `${API_HOSTNAME}/auth/signup`
 export const SIGNIN_BYUSERNAME_URL = `${API_HOSTNAME}/auth/signin`
