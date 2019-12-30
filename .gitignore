@@ -11,3 +11,4 @@ ecosystem.json
 *.ntvs*
 *.njsproj
 *.sln
+/dist/
