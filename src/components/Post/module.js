@@ -59,13 +59,13 @@ const post = {
       return new Promise((resolve, reject) => {
         this._vm.$axios({
           commit,
-          url: `${BASE_POST_URL}/${payload.id}`,
+          url: `${BASE_POST_URL}/detail/${payload.id}`,
           doHideAlert: true,
           success(result) {
             // 保存文章
-            commit(LOAD_POST, result.doc)
+            commit(LOAD_POST, result)
             // 向前端通知操作成功
-            resolve(result.doc)
+            resolve(result)
           },
           fail(err) {
             // 向前端通知操作失败
@@ -82,7 +82,6 @@ const post = {
           url: `${BASE_POST_URL}`,
           doHideAlert: true,
           success(result) {
-            console.log(result)
             // 保存文章
             commit(LOAD_POSTS, result)
             // 向前端通知操作成功

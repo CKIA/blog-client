@@ -1,9 +1,9 @@
 <template>
   <div>
     <HomeBanner />
-    <HomeMenu />
-    <HomePost />
+    <!-- <HomeMenu /> -->
     <HomeCategory />
+    <HomePost />
   </div>
 </template>
 <script>

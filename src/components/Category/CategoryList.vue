@@ -1,38 +1,29 @@
 <template>
   <div :class="$style.wrap">
     <nav>
-      <router-link :class="$style.item" to="/categories/1000000000">HTML</router-link>
-      <router-link :class="$style.item" to="/categories/1100000000">CSS</router-link>
-      <router-link :class="$style.item" to="/categories/1200000000">JavaScript</router-link>
-      <router-link :class="$style.item" to="/categories/1300000000">HTTP</router-link>
-      <div :class="$style.item">
+      <div v-for="item in categoryRootDatas" :key="item.id">
+      <router-link v-if="item.subLevels.length == 0" :class="$style.item" :to="{path:item.url}" :key="item.id">{{item.title}}</router-link>
+      <div v-else :class="$style.item">
         <details>
-          <summary>前端框架</summary>
+          <summary>{{item.title}}</summary>
           <nav>
-            <router-link :class="$style.dItems" to="/categories/1404000000">React</router-link>
-            <router-link :class="$style.dItems" to="/categories/1403000000">Vue</router-link>
-            <router-link :class="$style.dItems" to="/categories/1401000000">jQuery</router-link>
-            <router-link :class="$style.dItems" to="/categories/1402000000">Bootstrap</router-link>
+            <router-link :class="$style.dItems"  v-for="subLevel in item.subLevels" :to="{path:subLevel.url}" :key="subLevel.id">{{subLevel.title}}</router-link>
           </nav>
         </details>
       </div>
-      <router-link :class="$style.item" to="/categories/1500000000">前端工具</router-link>
-      <router-link :class="$style.item" to="/categories/1600000000">移动端</router-link>
-      <div :class="$style.item">
-        <details>
-          <summary>后端相关</summary>
-          <nav>
-            <router-link :class="$style.dItems" to="/categories/1701000000">NodeJS</router-link>
-            <router-link :class="$style.dItems" to="/categories/1702000000">MongoDB</router-link>
-            <router-link :class="$style.dItems" to="/categories/1703000000">PHP</router-link>
-            <router-link :class="$style.dItems" to="/categories/1704000000">MySQL</router-link>
-          </nav>
-        </details>
       </div>
     </nav>
   </div>
 </template>
-
+<script>
+export default {
+  computed: {
+    categoryRootDatas() {
+      return this.$store.getters.getCateGories
+    }
+  }
+}
+</script>
 <style module lang="postcss">
 .wrap {
   box-sizing: border-box;

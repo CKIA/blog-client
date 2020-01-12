@@ -14,8 +14,8 @@
         :key="item.id"
         @click="$router.push(item.url)"
       >
-        <p>{{ item.name }}</p>
-        <p>{{ item.des }}</p>
+        <p>{{ item.title }}</p>
+        <p>{{ item.total }}篇文章</p>
       </li>
     </ul>
   </section>
@@ -25,20 +25,10 @@
 export default {
   computed: {
     getFilterPosts() {
-      console.log(this.$store.getters.getPostsFilterByCategoryNumber)
       return this.$store.getters.getPostsFilterByCategoryNumber
     },
     categoryDatas() {
-      return [
-        { id: 0, name: 'HTML', des: `${this.getFilterPosts(1000000000).length}篇文章`, url: '/categories/1000000000' },
-        { id: 1, name: 'CSS', des: `${this.getFilterPosts(1100000000).length}篇文章`, url: '/categories/1100000000' },
-        { id: 2, name: 'Mobile', des: `${this.getFilterPosts(1600000000).length}篇文章`, url: '/categories/1600000000' },
-        { id: 3, name: 'NodeJS', des: `${this.getFilterPosts(1701000000).length}篇文章`, url: '/categories/1701000000' },
-        { id: 4, name: 'Utils', des: `${this.getFilterPosts(1500000000).length}篇文章`, url: '/categories/1500000000' },
-        { id: 5, name: 'Vue', des: `${this.getFilterPosts(1403000000).length}篇文章`, url: '/categories/1403000000' },
-        { id: 6, name: 'Javascript', des: `${this.getFilterPosts(1200000000).length}篇文章`, url: '/categories/1200000000' },
-        { id: 7, name: 'React', des: `${this.getFilterPosts(1404000000).length}篇文章`, url: '/categories/1404000000' }
-      ]
+      return this.$store.getters.getCateGories
     }
   }
 }

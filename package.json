@@ -18,6 +18,8 @@
     "html-minifier": "^3.5.16",
     "leancloud-storage": "^3.15.0",
     "marked": "^0.4.0",
+    "mavon-editor": "^2.7.7",
+    "moment": "^2.24.0",
     "vue": "^2.5.2",
     "vue-axios": "^2.1.5",
     "vue-lazyload": "^1.2.6",

@@ -13,9 +13,8 @@
         @click="$router.push(`/posts/${item.id}`)"
       >
         <!-- <a v-html="item.headPortrait"/> -->
-        <p :class="$style['main-item-txt']">{{ item.describe }}</p>
-        <span :class="$style['main-item-category-author']">作者:{{ item.authorName }}</span>
-        <span :class="$style['main-item-category']">创作时间:{{ item.createTime }}</span>
+        <p :class="$style['main-item-txt']">{{ item.contentDescribe }}</p>
+        <span :class="$style['main-item-category']">{{ $moment(item.createTime).format('YYYY-MM-DD HH:MM') }}</span>
       </li>
     </ul>
   </section>
@@ -25,7 +24,6 @@
 export default {
   computed: {
     categoryRecommend() {
-      console.info(this.$store.getters.getPostsWithTitleData)
       return this.$store.getters.getPostsWithTitleData
     }
   }
@@ -66,6 +64,7 @@ export default {
   border-radius: 4px;
   text-align: center;
   color: white;
+  height: 15%;
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -73,15 +72,14 @@ export default {
 
 .main-item-txt {
   position: relative;
-  box-sizing: border-box;
-  padding: 0 30px;
+  padding: 0 10px;
+  width: 85%;
+  text-align:left;
   border-radius: 4px;
   overflow: hidden;
-  font-size: 1.5em;
-  line-height: 100px;
+  font-size: 1em;
   text-overflow: ellipsis;
   white-space: nowrap;
-  background-color: rgba(0, 0, 0, .3);
   cursor: pointer;
 }
 
@@ -89,27 +87,25 @@ export default {
   position: absolute;
   bottom: 10px;
   right: 10px;
-  width: 30%;
+  width: 180px;
   height: 20px;
   display: inline-block;
-  padding: 2px 4px;
   border-radius: 6px;
+  text-align:right;
   font-size: 1em;
   line-height: 1.5;
-  background: rgba(7, 17, 27, .4);
 }
 .main-item-category-author {
   position: absolute;
-  bottom: 10px;
+  top: 10px;
   left: 10px;
   width: 20%;
   height: 20px;
   display: inline-block;
-  padding: 2px 4px;
+  text-align:left;
   border-radius: 6px;
   font-size: 1em;
   line-height: 1.5;
-  background: rgba(7, 17, 27, .4);
 }
 @media all and (min-width: 900px) {
   .main {
@@ -117,7 +113,7 @@ export default {
   }
 
   .main-item-txt {
-    line-height: 160px;
+    line-height: 100px;
   }
 }
 </style>

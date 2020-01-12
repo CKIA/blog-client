@@ -2,42 +2,43 @@
   <article v-if="category" :class="$style.box">
     <BaseBack @click.native="$router.push('/categories')">类别列表</BaseBack>
     <BaseTitle>{{ category.name }}知识体系</BaseTitle>
+    <router-link :class="$style['button-add']" :to="{path:'/content/add'}">添加文章</router-link>
     <section :class="$style.main">
       <p :class="$style.description">{{ category.description }}</p>
-      <dl v-for="(item, index) in childCategories" :key="index">
-        <dt>
-          <BreadCrumb :class="$style['bread-crumb']" :datas="item.titleDatas"/>
-        </dt>
-        <dd
-          v-for="(innerItem, innerIndex) in item.posts"
-          :key="innerIndex"
+      <p :class="$style['bread-crumb']">{{category.name}}</p>
+      <dl v-for="(item, index) in category.contentDtoList" :key="index">
+        <dd :key="item.id"
           :class="$style.item"
           @click="$router.push({
-            name:'post',
-            params: { postid: innerItem._id, parentPath: $route.path }
+            name:'content',
+            params:{ postid: item.id, parentPath: $route.path }
           })"
-        >{{ innerItem.title }}</dd>
+        >{{ item.contentDescribe }}</dd>
       </dl>
     </section>
   </article>
 </template>
 <script>
 import BaseBack from '@/common/BaseBack'
-import BreadCrumb from '@/common/BreadCrumb'
 import BaseTitle from '@/common/BaseTitle'
+import { LOAD_CATEGORIE_ONE_ASYNC } from '@/components/Category/module'
 
 export default {
+  asyncData({ store, route }) {
+    return store.dispatch(LOAD_CATEGORIE_ONE_ASYNC,route.params.number)
+  },
   components: {
-    BreadCrumb,
     BaseBack,
     BaseTitle
+  },
+  methods: {
   },
   computed: {
     paramsNumber() {
       return this.$route.params.number
     },
     category() {
-      return this.$store.getters.getCategoryByNumber(Number(this.paramsNumber))
+      return this.$store.getters.getCategoryOne
     },
     childCategories() {
       return this.$store.getters.getPosterityCategories(Number(this.paramsNumber))
@@ -89,5 +90,15 @@ export default {
   &:nth-of-type(odd) {
     background-color: #fff;
   }
+}
+.button-add {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 3px 3px;
+    text-align: center;
+    /* text-decoration: none; */
+    display: inline-block;
+    font-size: 1em;
 }
 </style>

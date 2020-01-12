@@ -4,7 +4,14 @@ import App from './App'
 import createRouter from './router'
 import createStore from './store'
 import async from './utils/async'
+import moment from 'moment'
+import axios from "axios"
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
 
+Vue.use(mavonEditor)
+Vue.prototype.$axios_independent = axios
+Vue.prototype.$moment = moment
 Vue.use(async)
 Vue.use(VueLazyload, {
   loading: require('./assets/imgs/loading.gif'),

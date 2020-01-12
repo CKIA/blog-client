@@ -51,6 +51,17 @@ export default function createRouter() {
           }
         ]
       },
+      // 文章内容详情
+      {
+        path: '/content',
+        component: () => import(/* webpackChunkName:'Content' */ '@/components/Content/Content'),
+        name: 'content'
+      },
+      {
+        path: '/content/add',
+        component: () => import(/* webpackChunkName:'Content' */ '@/components/Content/ContentAdd'),
+        name: 'contentAdd'
+      },
       {
         path: '/categories',
         component: () => import(/* webpackChunkName:'category' */ '@/components/Category/CategoryList'),
