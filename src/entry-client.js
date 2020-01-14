@@ -67,8 +67,7 @@ router.onReady(() => {
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 plugins: [
-    .............
-    new ExtractTextPlugin({
+  new ExtractTextPlugin({
       filename: utils.assetsPath('css/[name].[contenthash].css'),
       allChunks: false,
     }),
