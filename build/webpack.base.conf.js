@@ -44,20 +44,20 @@ module.exports = {
   module: {
     rules: [
       // ...(config.dev.useEslint ? [createLintingRule()] : []),
-      {
-        test: /\.css$/,
-        use : [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-            }
-          }
-        ]
-      },
+//       {
+//         test: /\.css$/,
+//         use : [
+//           {
+//             loader: 'style-loader',
+//           },
+//           {
+//             loader: 'css-loader',
+//             options: {
+//               sourceMap: true,
+//             }
+//           }
+//         ]
+//       },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
