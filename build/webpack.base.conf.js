@@ -46,7 +46,8 @@ module.exports = {
       // ...(config.dev.useEslint ? [createLintingRule()] : []),
       {
         test: /\.css$/,
-            use : [
+        use : [
+          {
             loader: 'style-loader',
           },
           {
@@ -54,7 +55,8 @@ module.exports = {
             options: {
               sourceMap: true,
             }
-          }]
+          }
+        ]
       },
       {
         test: /\.vue$/,
