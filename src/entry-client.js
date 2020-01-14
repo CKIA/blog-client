@@ -64,11 +64,11 @@ router.onReady(() => {
   })
   app.$mount('#root')
 })
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+//const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-plugins: [
-  new ExtractTextPlugin({
-      filename: utils.assetsPath('css/[name].[contenthash].css'),
-      allChunks: false,
-    }),
-  ]
+//plugins: [
+  //new ExtractTextPlugin({
+    //  filename: utils.assetsPath('css/[name].[contenthash].css'),
+    //  allChunks: false,
+    //}),
+ // ]
