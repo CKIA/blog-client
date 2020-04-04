@@ -2,7 +2,7 @@ let API_HOSTNAME
 if (process.env.NODE_ENV === 'production') {
   API_HOSTNAME = 'http://www.ckia.net.cn'
 } else {
-  API_HOSTNAME = 'http://192.168.1.103:8090'
+  API_HOSTNAME = 'http://192.168.31.157:8090'
 }
 export const SIGNUP_URL = `${API_HOSTNAME}/auth/signup`
 export const SIGNIN_BYUSERNAME_URL = `${API_HOSTNAME}/auth/signin`
@@ -17,4 +17,4 @@ export const BASE_CATEGORY_URL = `${API_HOSTNAME}/resource/categories`
 export const BASE_LIKE_URL = `${API_HOSTNAME}/resource/likes`
 export const BASE_COMMENT_URL = `${API_HOSTNAME}/resource/comments`
 
-export const ADMIN_URL = 'http://www.ckia.net.cn'
+export const ADMIN_URL = API_HOSTNAME

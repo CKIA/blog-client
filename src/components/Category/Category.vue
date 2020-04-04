@@ -1,8 +1,12 @@
 <template>
   <article v-if="category" :class="$style.box">
     <BaseBack @click.native="$router.push('/categories')">类别列表</BaseBack>
+    <BaseButton
+      :class="$style.basebutton"
+      @click.native="$router.push('/content/add')"
+    >添加文章</BaseButton>
     <BaseTitle>{{ category.name }}知识体系</BaseTitle>
-    <router-link :class="$style['button-add']" :to="{path:'/content/add'}">添加文章</router-link>
+    
     <section :class="$style.main">
       <p :class="$style.description">{{ category.description }}</p>
       <p :class="$style['bread-crumb']">{{category.name}}</p>
@@ -11,7 +15,7 @@
           :class="$style.item"
           @click="$router.push({
             name:'content',
-            params:{ postid: item.id, parentPath: $route.path }
+            params:{ contentId: item.id, parentPath: $route.path }
           })"
         >{{ item.contentDescribe }}</dd>
       </dl>
@@ -22,6 +26,7 @@
 import BaseBack from '@/common/BaseBack'
 import BaseTitle from '@/common/BaseTitle'
 import { LOAD_CATEGORIE_ONE_ASYNC } from '@/components/Category/module'
+import BaseButton from '@/common/BaseButton'
 
 export default {
   asyncData({ store, route }) {
@@ -29,7 +34,8 @@ export default {
   },
   components: {
     BaseBack,
-    BaseTitle
+    BaseTitle,
+    BaseButton
   },
   methods: {
   },
@@ -91,14 +97,11 @@ export default {
     background-color: #fff;
   }
 }
-.button-add {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 3px 3px;
-    text-align: center;
-    /* text-decoration: none; */
-    display: inline-block;
-    font-size: 1em;
+button.basebutton {
+  margin: 0 4px;
+  font-size: 1em;
+  color: rgba(0, 0, 0, .8);
+  background: #f5f5f5;
+  width: 100px;
 }
 </style>

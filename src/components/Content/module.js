@@ -4,7 +4,7 @@ export const LOAD_CONTENT = 'LOAD_CONTENT'
 export const LOAD_CONTENT_ASYNC = 'LOAD_CONTENT_ASYNC'
 const content = {
   state: {
-    result: []
+    result: {}
   },
   getters: {
     getContent: state => state.result
@@ -21,7 +21,7 @@ const content = {
               // 保存文章
               commit(LOAD_CONTENT, result)
               // 向前端通知操作成功
-              resolve(result.doc)
+              resolve(result)
             },
             fail(err) {
               // 向前端通知操作失败
